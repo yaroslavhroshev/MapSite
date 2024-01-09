@@ -1,0 +1,71 @@
+.card {
+  width: 240px;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0 4px 5px 1px #efeeee;
+  position: relative; // під питанням
+  border: 1px solid #e5e5e5;
+
+  .card-image {
+    width: 240px;
+    height: 200px;
+    background-image: url('https://img.freepik.com/free-photo/3d-car-with-vibrant-colors_23-2150797034.jpg?size=626&ext=jpg');
+    background-size: cover;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+  }
+
+  .card-content-wrapper {
+    background-color: #fff;
+    padding: 12px;
+    height: calc(100% - 200px);
+    display: flex;
+    flex-direction: column;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+    .card-title {
+      display: flex;
+      gap: 8px;
+      flex-direction: column;
+
+      p {
+        overflow: hidden;
+        text-align: start;
+        margin: 0;
+      }
+      .title {
+        font-weight: 500;
+      }
+
+      div {
+        display: flex;
+        div {
+          background-image: url('../../assets/emty_rating.svg');
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+
+    .card-price {
+      text-align: start;
+      margin-top: 8px;
+
+      p {
+        margin: 0;
+      }
+
+      .text-price {
+        font-size: 0.75rem;
+        color: rgba(64, 75, 105, 0.6);
+      }
+
+      .price {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

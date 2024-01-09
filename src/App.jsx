@@ -2,7 +2,11 @@ import './App.css';
 import MainPage from './pages/MainPage';
 
 const App = () => {
-  return <MainPage />;
+  return (
+    <>
+      <MainPage />;
+    </>
+  );
 };
 
 export default App;
