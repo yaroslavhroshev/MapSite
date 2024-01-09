@@ -1,15 +1,16 @@
-import { useSelector } from 'react-redux';
 import './Card.scss';
+import PropTypes from 'prop-types';
 
-const Card = () => {
-  const markers = useSelector((state) => state.markers.markers);
+const Card = ({ name, mark, imageUrl, price, geocode }) => {
   return (
     <div className="card">
-      <div className="card-image" />
+      <div className="card-image">
+        <img src={imageUrl} alt={name} />
+      </div>
       <div className="card-content-wrapper">
         <div className="card-title">
-          <p className="title">Name</p>
-          <p className="mark">Mark</p>
+          <p className="title">{name}</p>
+          <p className="mark">{mark}</p>
           <div>
             <div />
             <div />
@@ -20,15 +21,35 @@ const Card = () => {
         </div>
         <div className="card-price">
           <p className="text-price">Вартість</p>
-          <p>Ціна $</p>
-          <div>
-            <div />
-            <p>Геолокація</p>
+          <p className="price">{price} $</p>
+          <div className="geo-code-wrapper">
+            <div className="geo-icon" />
+            <p className="geocode">
+              {geocode.map((code) => (
+                <span key={code}>{code}</span>
+              ))}
+            </p>
           </div>
         </div>
       </div>
     </div>
   );
+};
+
+Card.propTypes = {
+  name: PropTypes.string,
+  mark: PropTypes.string,
+  imageUrl: PropTypes.string,
+  price: PropTypes.number,
+  geocode: PropTypes.arrayOf(PropTypes.number),
+};
+
+Card.defaultProps = {
+  name: '',
+  mark: '',
+  imageUrl: '',
+  price: 0,
+  geocode: [],
 };
 
 export default Card;

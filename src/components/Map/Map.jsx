@@ -6,11 +6,12 @@ import MarkerClusterGroup from 'react-leaflet-cluster';
 import './Map.scss';
 import { useSelector } from 'react-redux';
 import MapEventsHandler from '../MapEventsHandler/MapEventsHandler';
+import Card from '../Card/Card';
 
 const Map = () => {
   const mapRef = useRef(null);
   const markers = useSelector((state) => state?.markers?.markers);
-
+  console.log(markers);
   const handleClick = (e) => {
     console.log(e);
   };
@@ -29,8 +30,8 @@ const Map = () => {
   };
   return (
     <MapContainer
-      center={[50.254444, 28.657778]}
-      zoom={13}
+      center={[50.451437934305005, 30.52302501859049]}
+      zoom={6}
       onClick={handleClick}
       ref={mapRef}
     >
@@ -43,13 +44,17 @@ const Map = () => {
         chunkedLoading
         iconCreateFunction={createCustomClusterIcon}
       >
-        {markers.map((marker) => (
-          <Marker
-            key={marker.geocode}
-            position={marker.geocode}
-            icon={customIcon}
-          >
-            <Popup>{marker.popUp}</Popup>
+        {markers.map(({ geocode, name, mark, imageUrl, price }) => (
+          <Marker key={geocode} position={geocode} icon={customIcon}>
+            <Popup>
+              <Card
+                name={name}
+                mark={mark}
+                imageUrl={imageUrl}
+                price={price}
+                geocode={geocode}
+              />
+            </Popup>
           </Marker>
         ))}
       </MarkerClusterGroup>

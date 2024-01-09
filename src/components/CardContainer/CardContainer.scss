@@ -1,0 +1,14 @@
+.container {
+  max-width: 278px;
+  // height: calc(100vh - 108px);
+  height: 70vh;
+  overflow-y: auto;
+  margin-right: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 8px;
+  gap: 8px;
+  padding: 20px 0 100px 12px;
+  // overflow: scroll;
+}

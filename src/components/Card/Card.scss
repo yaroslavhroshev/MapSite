@@ -1,20 +1,25 @@
 .card {
   width: 240px;
-  height: 380px;
+  height: 370px;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
   box-shadow: 0 4px 5px 1px #efeeee;
   position: relative; // під питанням
   border: 1px solid #e5e5e5;
+  background-color: #fff;
+  box-sizing: border-box;
 
   .card-image {
-    width: 240px;
-    height: 200px;
-    background-image: url('https://img.freepik.com/free-photo/3d-car-with-vibrant-colors_23-2150797034.jpg?size=626&ext=jpg');
-    background-size: cover;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
+    width: max-content;
+    height: max-content;
+    img {
+      width: 240px;
+      height: 200px;
+      background-size: cover;
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+    }
   }
 
   .card-content-wrapper {
@@ -28,8 +33,9 @@
 
     .card-title {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       flex-direction: column;
+      margin-bottom: 5px;
 
       p {
         overflow: hidden;
@@ -37,7 +43,8 @@
         margin: 0;
       }
       .title {
-        font-weight: 500;
+        font-weight: 600;
+        font-size: 1rem;
       }
 
       div {
@@ -52,10 +59,9 @@
 
     .card-price {
       text-align: start;
-      margin-top: 8px;
 
       p {
-        margin: 0;
+        margin: 0px;
       }
 
       .text-price {
@@ -64,7 +70,28 @@
       }
 
       .price {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .geo-code-wrapper {
+        display: flex;
+        flex-direction: column;
+        // gap: 10px;
+
+        // .geo-icon {
+        //   background-image: url('../../assets/active-icon.png');
+        //   width: 20px;
+        //   height: 25px;
+        //   background-size: cover;
+        //   margin-right: 15px;
+        // }
+
+        p {
+          color: blue;
+          overflow: hidden;
+        }
       }
     }
   }
