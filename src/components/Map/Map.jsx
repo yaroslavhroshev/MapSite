@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Icon, DivIcon, point } from 'leaflet';
+import { DivIcon, point } from 'leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import './Map.scss';
 import { useSelector, useDispatch } from 'react-redux';
@@ -20,15 +20,9 @@ const Map = () => {
   );
   const handleClick = (e) => {
     if (newGeocodeIsActive) {
-      console.log(e);
       dispatch(addNewGeocode([e.lat, e.lng]));
     }
   };
-  const markerIcon = '../src/assets/icon.png';
-  const customIcon = new Icon({
-    iconUrl: markerIcon,
-    iconSize: [25, 25],
-  });
 
   const createCustomClusterIcon = (cluster) => {
     return new DivIcon({
@@ -57,7 +51,6 @@ const Map = () => {
           <Marker
             key={marker.geocode}
             position={marker.geocode}
-            icon={customIcon}
             eventHandlers={{
               click: () => {
                 dispatch(initActiveMarker(marker));
