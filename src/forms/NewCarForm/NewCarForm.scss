@@ -5,6 +5,7 @@ form {
   border: 1px solid #000;
   border-radius: 10px;
   height: max-content;
+  background-color: rgba(255, 255, 255, 0.87);
 
   legend {
     font-size: 1.5rem;
@@ -37,19 +38,23 @@ form {
 
       &:focus {
         outline: none;
-        border-color: #6cb2eb; // змініть на ваш колір
+        border-color: #6cb2eb;
       }
     }
 
     div {
-      color: #ff0000; // колір помилок
+      color: #ff0000;
       font-size: 14px;
       margin-top: 5px;
     }
   }
 
+  .active-btn {
+    background-color: blue;
+  }
+
   button {
-    background-color: #4caf50; // колір кнопки
+    background-color: #4caf50;
     color: #fff;
     padding: 10px 15px;
     border: none;
@@ -57,7 +62,7 @@ form {
     cursor: pointer;
 
     &:hover {
-      background-color: #45a049; // колір кнопки при наведенні
+      background-color: #45a049;
     }
   }
 }

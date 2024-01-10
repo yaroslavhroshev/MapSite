@@ -6,14 +6,23 @@ import MarkerClusterGroup from 'react-leaflet-cluster';
 import './Map.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import MapEventsHandler from '../MapEventsHandler/MapEventsHandler';
-import { initActiveMarker } from '../../redux/slices/markersSlice';
+import {
+  initActiveMarker,
+  addNewGeocode,
+} from '../../redux/slices/markersSlice';
 
 const Map = () => {
   const mapRef = useRef(null);
   const markers = useSelector((state) => state?.markers?.markers);
   const dispatch = useDispatch();
+  const newGeocodeIsActive = useSelector(
+    (state) => state?.markers?.newGeocodeIsActive,
+  );
   const handleClick = (e) => {
-    console.log(e);
+    if (newGeocodeIsActive) {
+      console.log(e);
+      dispatch(addNewGeocode([e.lat, e.lng]));
+    }
   };
   const markerIcon = '../src/assets/icon.png';
   const customIcon = new Icon({

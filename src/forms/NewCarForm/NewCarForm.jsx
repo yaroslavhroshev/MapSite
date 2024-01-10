@@ -1,15 +1,26 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import { useFormik } from 'formik';
-import { addNewMarker } from '../../redux/slices/markersSlice';
+import {
+  addNewMarker,
+  onNewGeocodeIsActive,
+  offNewGeocodeIsActive,
+  deleteNewGeocode,
+} from '../../redux/slices/markersSlice';
 import validationSchema from './validationSchema';
 import './NewCarForm.scss';
 
 const CarForm = () => {
   const dispatch = useDispatch();
+  const newGeocodeIsActive = useSelector(
+    (state) => state?.markers?.newGeocodeIsActive,
+  );
+  const newGeocode = useSelector((state) => state?.markers?.newGeocode);
 
   const onSubmit = (values, actions) => {
-    console.log('Submitted:', values);
     dispatch(addNewMarker(values));
+    dispatch(deleteNewGeocode());
+    dispatch(offNewGeocodeIsActive());
     actions.resetForm();
   };
 
@@ -24,6 +35,13 @@ const CarForm = () => {
     validationSchema,
     onSubmit,
   });
+
+  useEffect(() => {
+    if (newGeocode.length > 0) {
+      formik.setFieldValue('geocode[0]', newGeocode[0]);
+      formik.setFieldValue('geocode[1]', newGeocode[1]);
+    }
+  }, [newGeocode]);
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -97,42 +115,68 @@ const CarForm = () => {
       </div>
 
       <div>
-        <label htmlFor="geocode">
-          Геодані
-          <div>
-            <input
-              id="geocode[0]"
-              name="geocode[0]"
-              type="number"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.geocode[0] ? formik.values.geocode[0] : ''}
-            />
-            <input
-              className="input--margin"
-              id="geocode[1]"
-              name="geocode[1]"
-              type="number"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.geocode[1] ? formik.values.geocode[1] : ''}
-            />
-          </div>
-          <div>
-            {formik.touched.geocode && formik.errors.geocode && (
-              <div>{formik.errors.geocode[0]}</div>
-            )}
-          </div>
-          <div>
-            {formik.touched.geocode && formik.errors.geocode && (
-              <div>{formik.errors.geocode[1]}</div>
-            )}
-          </div>
-        </label>
+        <p>Натисніть на кнопку нижче, після чого натисніть на карту</p>
+        <button
+          onClick={() => {
+            dispatch(onNewGeocodeIsActive());
+          }}
+          type="button"
+          className="active-btn"
+        >
+          Зроби клік
+        </button>
+        {newGeocodeIsActive ? (
+          <label htmlFor="geocode">
+            Геодані
+            <div>
+              <input
+                id="geocode[0]"
+                name="geocode[0]"
+                type="number"
+                onChange={(e) => {
+                  formik.handleChange(e);
+                }}
+                onBlur={formik.handleBlur}
+                value={
+                  formik.values.geocode[0] !== undefined
+                    ? formik.values.geocode[0]
+                    : ''
+                }
+              />
+              <input
+                className="input--margin"
+                id="geocode[1]"
+                name="geocode[1]"
+                type="number"
+                onChange={(e) => {
+                  formik.handleChange(e);
+                }}
+                onBlur={formik.handleBlur}
+                value={
+                  formik.values.geocode[1] !== undefined
+                    ? formik.values.geocode[1]
+                    : ''
+                }
+              />
+            </div>
+            <div>
+              {formik.touched.geocode && formik.errors.geocode && (
+                <div>{formik.errors.geocode[0]}</div>
+              )}
+            </div>
+            <div>
+              {formik.touched.geocode && formik.errors.geocode && (
+                <div>{formik.errors.geocode[1]}</div>
+              )}
+            </div>
+          </label>
+        ) : null}
       </div>
 
       <div>
-        <button type="submit">Відправити</button>
+        <button type="submit" disabled={!newGeocodeIsActive}>
+          Відправити
+        </button>
       </div>
     </form>
   );

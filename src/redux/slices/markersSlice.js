@@ -46,10 +46,29 @@ const markersSlice = createSlice({
     deleteActiveMarker(state) {
       state.activeMarker = {};
     },
+    onNewGeocodeIsActive(state) {
+      state.newGeocodeIsActive = true;
+    },
+    offNewGeocodeIsActive(state) {
+      state.newGeocodeIsActive = false;
+    },
+    addNewGeocode(state, action) {
+      state.newGeocode = [...action.payload];
+    },
+    deleteNewGeocode(state) {
+      state.newGeocode = [];
+    },
   },
 });
 
-export const { initActiveMarker, deleteActiveMarker, addNewMarker } =
-  markersSlice.actions;
+export const {
+  initActiveMarker,
+  deleteActiveMarker,
+  addNewMarker,
+  onNewGeocodeIsActive,
+  offNewGeocodeIsActive,
+  addNewGeocode,
+  deleteNewGeocode,
+} = markersSlice.actions;
 
 export default markersSlice.reducer;
