@@ -1,14 +1,13 @@
 .container {
-  max-width: 278px;
-  // height: calc(100vh - 108px);
-  height: 70vh;
+  width: max-content;
+  height: 80vh;
   overflow-y: auto;
   margin-right: auto;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  grid-gap: 8px;
-  gap: 8px;
-  padding: 20px 0 100px 12px;
-  // overflow: scroll;
+  padding: 0px 10px 20px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }

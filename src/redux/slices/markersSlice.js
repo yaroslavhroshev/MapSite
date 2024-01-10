@@ -28,12 +28,22 @@ const initialState = {
       price: 15000,
     },
   ],
+  activeMarker: {},
 };
 
 const markersSlice = createSlice({
   name: 'markers',
   initialState,
-  reducers: {},
+  reducers: {
+    initActiveMarker(state, action) {
+      state.activeMarker = action.payload;
+    },
+    deleteActiveMarker(state) {
+      state.activeMarker = {};
+    },
+  },
 });
+
+export const { initActiveMarker, deleteActiveMarker } = markersSlice.actions;
 
 export default markersSlice.reducer;

@@ -1,17 +1,17 @@
 import { useRef } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Icon, DivIcon, point, map } from 'leaflet';
+import { Icon, DivIcon, point } from 'leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import './Map.scss';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import MapEventsHandler from '../MapEventsHandler/MapEventsHandler';
-import Card from '../Card/Card';
+import { initActiveMarker } from '../../redux/slices/markersSlice';
 
 const Map = () => {
   const mapRef = useRef(null);
   const markers = useSelector((state) => state?.markers?.markers);
-  console.log(markers);
+  const dispatch = useDispatch();
   const handleClick = (e) => {
     console.log(e);
   };
@@ -44,18 +44,17 @@ const Map = () => {
         chunkedLoading
         iconCreateFunction={createCustomClusterIcon}
       >
-        {markers.map(({ geocode, name, mark, imageUrl, price }) => (
-          <Marker key={geocode} position={geocode} icon={customIcon}>
-            <Popup>
-              <Card
-                name={name}
-                mark={mark}
-                imageUrl={imageUrl}
-                price={price}
-                geocode={geocode}
-              />
-            </Popup>
-          </Marker>
+        {markers.map((marker) => (
+          <Marker
+            key={marker.geocode}
+            position={marker.geocode}
+            icon={customIcon}
+            eventHandlers={{
+              click: () => {
+                dispatch(initActiveMarker(marker));
+              },
+            }}
+          />
         ))}
       </MarkerClusterGroup>
     </MapContainer>

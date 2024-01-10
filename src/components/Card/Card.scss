@@ -1,6 +1,6 @@
 .card {
   width: 240px;
-  height: 370px;
+  height: 380px;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -13,6 +13,7 @@
   .card-image {
     width: max-content;
     height: max-content;
+    position: relative;
     img {
       width: 240px;
       height: 200px;
@@ -20,11 +21,30 @@
       border-top-right-radius: 10px;
       border-top-left-radius: 10px;
     }
+
+    .active-card-close-icon {
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      background-image: url('../../assets/close-icon.svg');
+      right: 8px;
+      top: 4px;
+      cursor: pointer;
+      background-size: cover;
+    }
+
+    button {
+      padding: 0;
+      background-color: #1a1a1a;
+      border: 2px;
+      border-style: outset;
+      border-color: buttonborder;
+    }
   }
 
   .card-content-wrapper {
     background-color: #fff;
-    padding: 12px;
+    padding: 12px 12px 0 12px;
     height: calc(100% - 200px);
     display: flex;
     flex-direction: column;
@@ -72,12 +92,13 @@
       .price {
         font-size: 1.2rem;
         font-weight: 600;
-        margin-bottom: 5px;
+        // margin-bottom: 5px;
       }
 
       .geo-code-wrapper {
         display: flex;
         flex-direction: column;
+        margin-bottom: 10px;
         // gap: 10px;
 
         // .geo-icon {
@@ -89,6 +110,7 @@
         // }
 
         p {
+          font-size: 10px;
           color: blue;
           overflow: hidden;
         }

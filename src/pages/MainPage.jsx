@@ -1,6 +1,5 @@
 import Map from '../components/Map/Map';
 import './MainPage.scss';
-import Card from '../components/Card/Card';
 import CardContainer from '../components/CardContainer/CardContainer';
 
 const MainPage = () => {

@@ -33,67 +33,61 @@ module.exports = {
     'jsx-a11y',
     'import',
   ],
-  rules:
-    //  {
-    //   "react-refresh/only-export-components": [
-    //     "warn",
-    //     {allowConstantExport: true},
-    //   ],
-    // },
-    {
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
-      'import/no-unresolved': 'off',
-      'no-unused-vars': 'warn',
-      'prefer-const': 'error',
-      'no-console': 'warn',
-      quotes: ['error', 'single'],
-      'jsx-quotes': ['error', 'prefer-double'],
-      indent: ['error', 2],
-      'react/jsx-indent': ['error', 2],
-      'max-len': ['error', { code: 125 }],
-      'comma-dangle': ['error', 'always-multiline'],
-      semi: ['error', 'always'],
-      'import/order': [
-        'error',
-        {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-            'object',
-            'type',
-          ],
-        },
-      ],
-      'no-trailing-spaces': 'error',
-      'react/function-component-definition': [
-        2,
-        {
-          namedComponents: 'arrow-function',
-        },
-      ],
-      'arrow-body-style': 'off',
-      'no-multi-spaces': 'error',
-      'react/jsx-tag-spacing': [
-        'error',
-        {
-          //     closingSlash: 'never',
-          //     beforeSelfClosing: 'always',
-          //     afterOpening: 'never',
-          // beforeClosing: 'never',
-        },
-      ],
-      'import/no-extraneous-dependencies': [
-        'error',
-        {
-          devDependencies: true,
-        },
-      ],
-    },
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'import/no-unresolved': 'off',
+    'no-unused-vars': 'warn',
+    'prefer-const': 'error',
+    'no-console': 'warn',
+    quotes: ['error', 'single'],
+    'jsx-quotes': ['error', 'prefer-double'],
+    indent: ['error', 2],
+    'react/jsx-indent': ['error', 2],
+    'max-len': ['error', { code: 125 }],
+    'comma-dangle': ['error', 'always-multiline'],
+    semi: ['error', 'always'],
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+          'type',
+        ],
+      },
+    ],
+    'no-trailing-spaces': 'error',
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: 'arrow-function',
+      },
+    ],
+    'arrow-body-style': 'off',
+    'no-multi-spaces': 'error',
+    'react/jsx-tag-spacing': [
+      'error',
+      {
+        //     closingSlash: 'never',
+        //     beforeSelfClosing: 'always',
+        //     afterOpening: 'never',
+        // beforeClosing: 'never',
+      },
+    ],
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: true,
+      },
+    ],
+    'no-param-reassign': ['error', { props: false }],
+  },
 };
