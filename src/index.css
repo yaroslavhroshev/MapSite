@@ -28,7 +28,12 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #213547;
+  background: rgb(13, 14, 15);
+  background: linear-gradient(
+    90deg,
+    rgba(13, 14, 15, 1) 0%,
+    rgba(0, 212, 255, 0.47951680672268904) 100%
+  );
 }
 
 h1 {

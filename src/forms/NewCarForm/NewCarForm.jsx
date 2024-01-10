@@ -114,7 +114,7 @@ const CarForm = () => {
         ) : null}
       </div>
 
-      <div>
+      <div className="geodata-wrapper">
         <p>Натисніть на кнопку нижче, після чого натисніть на карту</p>
         <button
           onClick={() => {
