@@ -1,0 +1,63 @@
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-right: 40px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  height: max-content;
+
+  legend {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    padding-top: 10px;
+  }
+
+  div {
+    margin-bottom: 20px;
+
+    .input--margin {
+      margin-top: 0;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    input {
+      width: 80%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-top: 6px;
+
+      &:focus {
+        outline: none;
+        border-color: #6cb2eb; // змініть на ваш колір
+      }
+    }
+
+    div {
+      color: #ff0000; // колір помилок
+      font-size: 14px;
+      margin-top: 5px;
+    }
+  }
+
+  button {
+    background-color: #4caf50; // колір кнопки
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #45a049; // колір кнопки при наведенні
+    }
+  }
+}

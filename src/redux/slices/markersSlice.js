@@ -29,12 +29,17 @@ const initialState = {
     },
   ],
   activeMarker: {},
+  newGeocode: [],
+  newGeocodeIsActive: false,
 };
 
 const markersSlice = createSlice({
   name: 'markers',
   initialState,
   reducers: {
+    addNewMarker(state, action) {
+      state.markers.unshift(action.payload);
+    },
     initActiveMarker(state, action) {
       state.activeMarker = action.payload;
     },
@@ -44,6 +49,7 @@ const markersSlice = createSlice({
   },
 });
 
-export const { initActiveMarker, deleteActiveMarker } = markersSlice.actions;
+export const { initActiveMarker, deleteActiveMarker, addNewMarker } =
+  markersSlice.actions;
 
 export default markersSlice.reducer;

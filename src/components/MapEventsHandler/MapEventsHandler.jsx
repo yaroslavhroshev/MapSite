@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const MapEventsHandler = ({ handleClick }) => {
   useMapEvents({
-    click: (e) => handleClick(e.target),
+    click: (e) => handleClick(e.latlng),
   });
   return null;
 };
